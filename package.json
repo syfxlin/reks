@@ -1,0 +1,54 @@
+{
+  "name": "@syfxlin/reks",
+  "version": "0.0.0-semantic-release",
+  "description": "Keystatic extensions library.",
+  "author": "Otstar Lin <i@ixk.me>",
+  "license": "MIT",
+  "keywords": [
+    "keystatic",
+    "cms"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "watch": "unbuild --stub"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syfxlin/reks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/syfxlin/reks/issues"
+  },
+  "homepage": "https://github.com/syfxlin/reks#readme",
+  "peerDependencies": {
+    "@keystatic/core": "^0.1.6",
+    "@markdoc/markdoc": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0"
+  }
+}
