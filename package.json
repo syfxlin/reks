@@ -37,18 +37,18 @@
   },
   "homepage": "https://github.com/syfxlin/reks#readme",
   "peerDependencies": {
-    "@keystatic/core": "^0.1.6",
+    "@keystatic/core": "^0.2.9",
     "@markdoc/markdoc": "^0.4.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
-    "eslint": "^8.48.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
     "unbuild": "^2.0.0"
   }
 }
