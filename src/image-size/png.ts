@@ -2,7 +2,7 @@
 import type { IImage } from "./types";
 import { readUInt32BE, toUTF8String } from "./utils";
 
-const pngSignature = "PNG\r\n\x1a\n";
+const pngSignature = "PNG\r\n\x1A\n";
 const pngImageHeaderChunkName = "IHDR";
 
 // Used to detect "fried" png's: http://www.jongware.com/pngdefry.html

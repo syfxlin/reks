@@ -68,7 +68,7 @@ export const utils = {
     const document = body;
     const headings = build(results.headings.map((h, i) => ({ ...h, step: i }))).children;
     const contents = results.contents.join(" ");
-    const excerpts = contents.length <= 140 ? contents : contents.substring(0, 140) + "...";
+    const excerpts = contents.length <= 140 ? contents : `${contents.substring(0, 140)}...`;
 
     return { document, headings, contents, excerpts };
   },

@@ -89,7 +89,7 @@ function validateInput(input: Uint8Array, index: number): void {
     throw new TypeError("Corrupt JPG, exceeded buffer limits");
   }
   // Every JPEG block must begin with a 0xFF
-  if (input[index] !== 0xff) {
+  if (input[index] !== 0xFF) {
     throw new TypeError("Invalid JPG, marker table corrupted");
   }
 }
@@ -119,7 +119,7 @@ export const JPG: IImage = {
       // 0xFFC1 is baseline optimized(SOF)
       // 0xFFC2 is progressive(SOF2)
       next = input[i + 1];
-      if (next === 0xc0 || next === 0xc1 || next === 0xc2) {
+      if (next === 0xC0 || next === 0xC1 || next === 0xC2) {
         const size = extractSize(input, i + 5);
 
         if (!orientation) {

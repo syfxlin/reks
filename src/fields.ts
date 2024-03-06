@@ -1,7 +1,7 @@
 import path from "path";
 import Markdoc, { Node } from "@markdoc/markdoc";
 import { fields as fs } from "@keystatic/core";
-import { imageSize, ISize } from "./image-size";
+import { ISize, imageSize } from "./image-size";
 
 export type Fields = typeof fs;
 
@@ -17,7 +17,7 @@ export type ModifyFields = Omit<Fields, "date" | "datetime"> & {
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
-const visit = (node: Node, files: Array<Map<string, Uint8Array>>) => {
+function visit(node: Node, files: Array<Map<string, Uint8Array>>) {
   if (node.type === "image") {
     const info = path.posix.parse(node.attributes.src ?? "");
     if (info.name && !/\.\d+x\d+$/.test(info.name)) {
@@ -38,9 +38,9 @@ const visit = (node: Node, files: Array<Map<string, Uint8Array>>) => {
   for (const item of node.children) {
     visit(item, files);
   }
-};
+}
 
-const append = (name: string, size: ISize) => {
+function append(name: string, size: ISize) {
   const info = path.posix.parse(name);
   if (/\.\d+x\d+$/.test(info.name)) {
     return name;
@@ -50,7 +50,7 @@ const append = (name: string, size: ISize) => {
     const ext = info.ext;
     return path.posix.format({ name, dir, ext });
   }
-};
+}
 
 export const fields: ModifyFields = {
   ...fs,
@@ -165,7 +165,7 @@ export const fields: ModifyFields = {
       const serialized = serialize(value, extra);
       if (serialized.content) {
         const node = Markdoc.parse(decoder.decode(serialized.content));
-        // @ts-ignore
+        // @ts-expect-error
         visit(node, [serialized.other, ...serialized.external.values()]);
         serialized.content = encoder.encode(Markdoc.format(node));
       }

@@ -1,33 +1,11 @@
 {
   "name": "@syfxlin/reks",
+  "type": "module",
   "version": "0.0.0-semantic-release",
   "description": "Keystatic extensions library.",
   "author": "Otstar Lin <i@ixk.me>",
   "license": "MIT",
-  "keywords": [
-    "keystatic",
-    "cms"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "unbuild",
-    "watch": "unbuild --stub"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist"
-  ],
+  "homepage": "https://github.com/syfxlin/reks#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/syfxlin/reks.git"
@@ -35,20 +13,45 @@
   "bugs": {
     "url": "https://github.com/syfxlin/reks/issues"
   },
-  "homepage": "https://github.com/syfxlin/reks#readme",
+  "keywords": [
+    "keystatic",
+    "cms"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bunchee",
+    "watch": "bunchee --watch"
+  },
   "peerDependencies": {
-    "@keystatic/core": "^0.2.9",
+    "@keystatic/core": "^0.3.0",
     "@markdoc/markdoc": "^0.4.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.5",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.2",
-    "prettier": "^3.1.1",
-    "typescript": "^5.3.3",
-    "unbuild": "^2.0.0"
+    "@keystatic/core": "^0.5.1",
+    "@syfxlin/eslint-config": "^1.0.4",
+    "@types/node": "^20.11.24",
+    "bunchee": "^4.4.8",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
   }
 }
