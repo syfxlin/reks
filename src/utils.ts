@@ -25,23 +25,24 @@ export interface PaginationData<T> {
 
 export const utils = {
   document(body: ReadonlyArray<DocumentElement>): DocumentData {
-    const visit = (items: ReadonlyArray<any>) => {
+    const visit = (items: ReadonlyArray<any>, names: Record<string, number>) => {
       const headings: Array<any> = [];
       const contents: Array<string> = [];
       for (const item of items) {
         if (item.text) {
           contents.push(item.text as string);
         } else if (item.type === "heading") {
-          const results = visit(item.children as Array<any>);
+          const results = visit(item.children as Array<any>, names);
           const name = results.contents.join("");
-          const slug = name;
-          const link = `#${encodeURIComponent(name)}`;
+          const slug = `${name}${names[name] ? `-${names[name]}` : ``}`;
+          const link = `#${encodeURIComponent(slug)}`;
           const level = item.level;
           headings.push({ name, slug, link, level });
           headings.push(...results.headings);
           contents.push(...results.contents);
+          names[name] = (names[name] ?? 0) + 1;
         } else if (item.children) {
-          const results = visit(item.children as Array<any>);
+          const results = visit(item.children as Array<any>, names);
           headings.push(...results.headings);
           contents.push(...results.contents);
         }
@@ -63,7 +64,7 @@ export const utils = {
       return parent;
     };
 
-    const results = visit(body);
+    const results = visit(body, {});
 
     const document = body;
     const headings = build(results.headings.map((h, i) => ({ ...h, step: i }))).children;
