@@ -33,14 +33,13 @@ export const utils = {
           contents.push(item.text as string);
         } else if (item.type === "heading") {
           const results = visit(item.children as Array<any>, names);
-          const name = results.contents.join("");
-          const slug = `${name}${names[name] ? `-${names[name]}` : ``}`;
-          const link = `#${encodeURIComponent(slug)}`;
-          const level = item.level;
-          headings.push({ name, slug, link, level });
+          item.name = results.contents.join("");
+          item.slug = `${item.name}${names[item.name] ? `-${names[item.name]}` : ``}`;
+          item.link = `#${encodeURIComponent(item.slug)}`;
+          headings.push({ name: item.name, slug: item.slug, link: item.link, level: item.level });
           headings.push(...results.headings);
           contents.push(...results.contents);
-          names[name] = (names[name] ?? 0) + 1;
+          names[item.name] = (names[item.name] ?? 0) + 1;
         } else if (item.children) {
           const results = visit(item.children as Array<any>, names);
           headings.push(...results.headings);
