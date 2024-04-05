@@ -51,7 +51,7 @@
     "@syfxlin/eslint-config": "^1.0.4",
     "@types/node": "^20.11.24",
     "bunchee": "^4.4.8",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "typescript": "^5.3.3"
   }
 }
