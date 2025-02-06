@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@markdoc/markdoc':
-    specifier: ^0.4.0
+    specifier: ^0.4.0 || ^0.5.0
     version: 0.4.0(react@18.2.0)
 
 devDependencies:
@@ -3178,8 +3178,6 @@ packages:
     peerDependencies:
       typescript: ^4.1 || ^5.0
     peerDependenciesMeta:
-      '@swc/helpers':
-        optional: true
       typescript:
         optional: true
     dependencies:
